@@ -14,7 +14,10 @@ class GetUserView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
     def get_queryset(self):
         # print('params ' ,self.request.user)
-        return  User.objects.filter(username = self.request.user)
+        # print(self.request.user)
+        # print(self.request.parser_context['kwargs']['pk'])
+        a = self.request.parser_context['kwargs']['pk']
+        return  User.objects.filter(id = a)
 
 
 # attributes for queryset
